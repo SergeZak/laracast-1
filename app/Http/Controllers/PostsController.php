@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 class PostsController extends Controller
 {
 
+    function __construct()
+    {
+        $this->middleware('auth')->except(['index','show']);
+    }
+
 
     function index()
     {
@@ -37,7 +42,9 @@ class PostsController extends Controller
             'body' => 'required'
         ]);
 
-        Post::create($request->only(['title', 'body']));
+        auth()->user()->publish(
+            new Post($request->only(['title', 'body']))
+        );
 
         return redirect('/');
     }
