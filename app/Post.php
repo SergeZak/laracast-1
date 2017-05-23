@@ -22,9 +22,9 @@ class Post extends Model
     }
 
 
-    function addComment($body)
+    function addComment($body, User $user)
     {
-        $this->comments()->create(['body'=>$body]);
+        $this->comments()->create(['body'=>$body, 'user_id'=>$user->id]);
     }
 
 
