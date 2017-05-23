@@ -5,6 +5,16 @@
     <div class="col-sm-8">
         <h1><small>Post:</small> {{ $post->title }}</h1>
 
+        @if($post->tags)
+            <ul>
+                @foreach($post->tags as $tag)
+                    <li>
+                        <a href="/posts/tags/{{ $tag->name }}">{{ $tag->name }}</a>
+                    </li>
+                @endforeach
+            </ul>
+        @endif
+
         <p>{{ $post->body }}</p>
 
         <hr />

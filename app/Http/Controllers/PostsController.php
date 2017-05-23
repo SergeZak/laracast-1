@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 

@@ -35,7 +35,11 @@ class RegistrationRequest extends FormRequest
 
     function persist()
     {
-        $user = User::create($this->only(['name', 'email','password']));
+        $user = User::create([
+            'name'=> $this->name,
+            'email' => $this->email,
+            'password' => bcrypt($this->password)
+        ]);
 
         auth()->login($user);
 

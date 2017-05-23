@@ -22,6 +22,14 @@ class Post extends Model
     }
 
 
+    function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
+
+
+
     function addComment($body, User $user)
     {
         $this->comments()->create(['body'=>$body, 'user_id'=>$user->id]);
